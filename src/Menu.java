@@ -1,16 +1,13 @@
 import java.time.DateTimeException;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Menu {
     public void mainMenu () {
-        LocalTime setTime;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter duration in hh:mm:ss format: ");
-        String setTimeStr = scanner.nextLine();
+        String inpStr = scanner.nextLine();
         try {
-            setTime = LocalTime.parse(setTimeStr);
-            Runnable alarm = new Alarm(setTime);
+            Runnable alarm = new Alarm(inpStr);
             alarm.run();
         } catch (DateTimeException e) {
             System.out.println("invalid format.");
